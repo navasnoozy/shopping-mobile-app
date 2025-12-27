@@ -1,20 +1,30 @@
 //app/_layout.tsx
 
-import { Slot } from "expo-router";
-import { View, StyleSheet } from "react-native";
+import { Stack } from "expo-router";
+import { StyleSheet, View } from "react-native";
+import 'react-native-reanimated';
 
 export default function RootLayout() {
-  return  <View style={styles.container} >
-    <Slot />
-  </View>
-     
+  return (
+    <View style={styles.container}>
+      <Stack
+        screenOptions={{
+          headerShown: false,
+          contentStyle: { backgroundColor: '#0D0D0D' },
+          animation: 'slide_from_right',
+        }}
+      >
+        <Stack.Screen name="index" />
+        <Stack.Screen name="home" />
+        <Stack.Screen name="transactions" />
+      </Stack>
+    </View>
+  );
 }
-
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    backgroundColor: '#0D0D0D',
   },
 });
